@@ -34,12 +34,18 @@ say "🚀 启动配置脚本（退出后临时文件自动清理）..."
 say "--------------------------------------------------------------"
 
 # curl|bash 时 bash 的 stdin 是管道，交互输入会拿到 EOF —— 这里把 stdin
-# 重新接到终端（/dev/tty），保证 Key 输入和确认提示可用。
+# 重新接到终端（/dev/tty），保证 Key 输入和确认提示可用；
+# 无终端但已带 --key/--yes 时直接运行，否则明确报错。
+has_flag() { local f="$1" a; shift; for a in "$@"; do [ "$a" = "$f" ] && return 0; done; return 1; }
+
 if [ -t 0 ]; then
   python3 "$TARGET" "$@"
-elif [ -e /dev/tty ]; then
+elif { [ -e /dev/tty ] && : < /dev/tty; } 2>/dev/null; then
   python3 "$TARGET" "$@" < /dev/tty
+elif has_flag --key "$@" && { has_flag --yes "$@" || has_flag -y "$@"; }; then
+  say "⚠️  无交互终端：已带 --key 与 --yes，跳过交互直接运行。"
+  python3 "$TARGET" "$@"
 else
-  die "当前没有可交互终端：无法输入 Key。请改用带 --key 的方式运行（必要时加 --yes）。"
+  die "当前没有可交互终端：无法输入 Key。请加 --key <KEY>（以及 --yes）运行。"
 fi
 exit $?
