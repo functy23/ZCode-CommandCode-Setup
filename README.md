@@ -21,8 +21,6 @@ curl -fsSL https://raw.githubusercontent.com/functy23/ZCode-CommandCode-Setup/ma
 curl -fsSL https://raw.githubusercontent.com/functy23/ZCode-CommandCode-Setup/main/install.sh | bash -s -- --dry-run
 ```
 
-> 注意：该方式要求本仓库为**公开**（私有仓库会 404）。
-
 **方式二**：双击 `run.command`，按提示粘贴 API Key。
 
 **方式三（终端）**：
