@@ -1,4 +1,4 @@
-# zcode-commandcode-setup
+# ZCode-CommandCode-Setup
 
 一键把 **CommandCode** 配置进 **ZCode** 的 macOS 脚本：输入 API Key，自动探测套餐内可用模型并写入配置。只依赖 macOS 自带的 Python 3，无需安装任何第三方包。
 
@@ -14,8 +14,8 @@
 **方式二（终端）**：
 
 ```bash
-git clone https://github.com/functy23/zcode-commandcode-setup.git   # 或直接下载本项目
-cd zcode-commandcode-setup
+git clone https://github.com/functy23/ZCode-CommandCode-Setup.git   # 或直接下载本项目
+cd ZCode-CommandCode-Setup
 python3 setup_commandcode.py                 # 交互式：提示输入 Key
 python3 setup_commandcode.py --key user_xxx  # 直接传 Key
 python3 setup_commandcode.py --dry-run       # 只探测和预览，不写配置
