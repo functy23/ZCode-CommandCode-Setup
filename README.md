@@ -9,9 +9,23 @@
 
 ## 使用方法
 
-**方式一（推荐）**：双击 `run.command`，按提示粘贴 API Key。
+**方式一（推荐）**：curl 一键运行——不下载仓库、不留本地文件，脚本拉到临时目录跑完自动清理：
 
-**方式二（终端）**：
+```bash
+curl -fsSL https://raw.githubusercontent.com/functy23/ZCode-CommandCode-Setup/main/install.sh | bash
+```
+
+参数通过 `-s --` 透传，例如先预览：
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/functy23/ZCode-CommandCode-Setup/main/install.sh | bash -s -- --dry-run
+```
+
+> 注意：该方式要求本仓库为**公开**（私有仓库会 404）。
+
+**方式二**：双击 `run.command`，按提示粘贴 API Key。
+
+**方式三（终端）**：
 
 ```bash
 git clone https://github.com/functy23/ZCode-CommandCode-Setup.git   # 或直接下载本项目
